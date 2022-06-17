@@ -12,6 +12,7 @@
 
 
     <link href="./style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./pokebola.png">
 
     <title>Pokedex</title>
 </head>
@@ -31,7 +32,7 @@
                 <form id="pokemonIngresado">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Ingrese nombre del pokemon</label>
-                        <input id="nombrePokemon" type="text" class="form-control" placeholder="Pikachu"
+                        <input id="pokemon_nombre" type="text" class="form-control" placeholder="Pikachu"
                             aria-describedby="Nombre Pokemon" required>
                     </div>
 
@@ -40,10 +41,15 @@
             </div>
         </div>
         
-        <div class="row justify-content-end " style="border: solid blue 2px" >
+        <div class="row justify-content-end mt-3"  >
             <div class="col-md-8 col-sm-10  pokedexFondo" style="border: rgb(0, 0, 0) solid 2px">
-                <div class="row h-100" style="border:green 2px solid">
+                <div class="row h-100 align-content-center" style="border:green 2px solid">
+                    <div class="col-6 h-75 w-50 mt-4 pt-5 px-5" id="pokemon_imagen" style="border: solid blue 2px">
 
+                    </div>
+                    <div class="col-6 h-75" id="pokemon_datos" style="border: solid blue 2px">
+                        
+                    </div>
                 </div>
               
                 
@@ -54,11 +60,11 @@
         </div>
     </div>
 
+    <a href=""></a>
 
 
 
-
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
         integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
         crossorigin="anonymous"></script>
