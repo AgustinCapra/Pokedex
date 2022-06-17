@@ -45,6 +45,7 @@ function validarPokemon(e) {
                 let imagenPokemon = document.createElement("img");
                 imagenPokemon.setAttribute("src", data.sprites["front_default"]) 
                 imagenPokemon.setAttribute("id", "imagenInsertada");
+                imagenPokemon.setAttribute("class","fade-in-image")
                 imagenPokemon.addEventListener("click", ()=>{
                     imagenPokemon.setAttribute("class","d-none");
                     let imgPkm_shiny = document.createElement("img");
