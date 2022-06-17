@@ -45,7 +45,22 @@ function validarPokemon(e) {
                 let imagenPokemon = document.createElement("img");
                 imagenPokemon.setAttribute("src", data.sprites["front_default"]) 
                 imagenPokemon.setAttribute("id", "imagenInsertada");
-                
+                imagenPokemon.addEventListener("click", ()=>{
+                    imagenPokemon.setAttribute("class","d-none");
+                    let imgPkm_shiny = document.createElement("img");
+                    imgPkm_shiny.setAttribute("src", data.sprites["front_shiny"])
+                    pokemon_imagen.appendChild(imgPkm_shiny);
+                    imgPkm_shiny.addEventListener("click",()=>{
+                        imgPkm_shiny.setAttribute("class","d-none");
+                        imagenPokemon.classList.remove("d-none")
+
+
+                    })
+
+                    
+
+
+                })
                 pokemon_imagen.appendChild(imagenPokemon)
                 
             
