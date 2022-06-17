@@ -57,3 +57,5 @@ function validarPokemon(e) {
     }
     )
 }
+
+let pepe = "Hola pepe"
