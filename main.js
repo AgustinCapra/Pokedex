@@ -3,6 +3,7 @@ pokemonIngresado.addEventListener("submit", validarPokemon);
 
 let pokemon_nombre = document.getElementById("pokemon_nombre");
 let pokemon_imagen = document.getElementById("pokemon_imagen");
+let pokemon_datos =  document.getElementById("pokemon_datos")
 
 //* API
 
@@ -15,16 +16,10 @@ function validarPokemon(e) {
 
     pokemon_api.then((data) => {
         const pokemons = data.results;
-        // for (i = 0; i < pokemons.length; i++) {
-        //     console.log(pokemons[i].name)
-        // }
-
-
-
         const busqueda = pokemons.find(el => 
             el.name === (pokemon_nombre.value).toLowerCase()
         )
-
+        
         if (busqueda == undefined){
             console.log("no existe ese Pokemon")
             Swal.fire({
@@ -40,12 +35,18 @@ function validarPokemon(e) {
         }
         else{
             // console.log(busqueda.url)
-            
-            fetch(busqueda.url).then((respuesta) => respuesta.json()).then((data) => {
+            fetch (`https://pokeapi.co/api/v2/pokemon-species/${busqueda.name}/`).then((response) =>response.json()).then((datos) =>{
+                let datosPokemon = document.createElement("p");
+                datosPokemon.innerHTML = datos["flavor_text_entries"][0]["flavor_text"];
+                pokemon_datos.appendChild(datosPokemon);
+
+            })
+            fetch(busqueda.url).then((respuesta) => respuesta.json()).then((data) =>
+            {
                 let imagenPokemon = document.createElement("img");
-                imagenPokemon.setAttribute("src", data.sprites["front_default"])
+                imagenPokemon.setAttribute("src", data.sprites["front_default"]) 
                 imagenPokemon.setAttribute("id", "imagenInsertada");
-                imagenPokemon.setAttribute("class","fade-in-image");
+                imagenPokemon.setAttribute("class","fade-in-image")
                 imagenPokemon.addEventListener("click", ()=>{
                     imagenPokemon.setAttribute("class","d-none");
                     let imgPkm_shiny = document.createElement("img");
@@ -57,12 +58,15 @@ function validarPokemon(e) {
 
 
                     })
+                
 
                     
 
 
                 })
                 pokemon_imagen.appendChild(imagenPokemon)
+                
+               
                 
             
 
@@ -73,3 +77,6 @@ function validarPokemon(e) {
     }
     )
 }
+
+
+
