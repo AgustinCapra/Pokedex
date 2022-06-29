@@ -71,7 +71,7 @@ function validarPokemon(e) {
             
 
             })
-            document.getElementById("pokemon_nombre").value ='';
+            document.getElementById("pokemon_nombre").value = '';
         }
 
     }
