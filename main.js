@@ -37,7 +37,7 @@ function validarPokemon(e) {
             // console.log(busqueda.url)
             fetch (`https://pokeapi.co/api/v2/pokemon-species/${busqueda.name}/`).then((response) =>response.json()).then((datos) =>{
                 let datosPokemon = document.createElement("p");
-                datosPokemon.innerHTML = datos["flavor_text_entries"][0]["flavor_text"];
+                datosPokemon.innerHTML = datos["flavor_text_entries"][26]["flavor_text"];
                 pokemon_datos.appendChild(datosPokemon);
 
             })
