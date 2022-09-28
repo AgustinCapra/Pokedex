@@ -3,7 +3,7 @@ pokemonIngresado.addEventListener("submit", validarPokemon);
 
 let pokemon_nombre = document.getElementById("pokemon_nombre");
 let pokemon_imagen = document.getElementById("pokemon_imagen");
-let pokemon_datos =  document.getElementById("pokemon_datos")
+let pokemon_datos =  document.getElementById("pokemon_datos");
 
 //* API
 
@@ -12,7 +12,7 @@ const pokemon_api = fetch("https://pokeapi.co/api/v2/pokemon?limit=150&offset=0"
 function validarPokemon(e) {
     e.preventDefault();
     pokemon_imagen.innerHTML= "";
-    
+    pokemon_datos.removeChild(pokemon_datos.firstChild);
 
     pokemon_api.then((data) => {
         const pokemons = data.results;
@@ -36,10 +36,10 @@ function validarPokemon(e) {
         else{
             // console.log(busqueda.url)
             fetch (`https://pokeapi.co/api/v2/pokemon-species/${busqueda.name}/`).then((response) =>response.json()).then((datos) =>{
+                
                 let datosPokemon = document.createElement("p");
                 datosPokemon.innerHTML = datos["flavor_text_entries"][26]["flavor_text"];
                 pokemon_datos.appendChild(datosPokemon);
-
             })
             fetch(busqueda.url).then((respuesta) => respuesta.json()).then((data) =>
             {
@@ -47,14 +47,14 @@ function validarPokemon(e) {
                 imagenPokemon.setAttribute("src", data.sprites["front_default"]) 
                 imagenPokemon.setAttribute("id", "imagenInsertada");
                 imagenPokemon.setAttribute("class","fade-in-image")
-                imagenPokemon.addEventListener("click", ()=>{
+                imagenPokemon.addEventListener("click", () => {
                     imagenPokemon.setAttribute("class","d-none");
                     let imgPkm_shiny = document.createElement("img");
                     imgPkm_shiny.setAttribute("src", data.sprites["front_shiny"])
                     pokemon_imagen.appendChild(imgPkm_shiny);
                     imgPkm_shiny.addEventListener("click",()=>{
                         imgPkm_shiny.setAttribute("class","d-none");
-                        imagenPokemon.classList.remove("d-none")
+                        imagenPokemon.classList.remove("d-none");
 
 
                     })
@@ -77,6 +77,4 @@ function validarPokemon(e) {
     }
     )
 }
-
-
 
